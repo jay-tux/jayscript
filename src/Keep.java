@@ -11,7 +11,7 @@ public class Keep extends ArgCall
 	{
 		if(args.size() < 2)
 		{
-			throw new JayInterpreterException("Syntax error: `keep` expects 2 arguments, " + args.size() + " given.");
+			throw new JayInterpreterException("Syntax error: `keep` expects at least 2 arguments, " + args.size() + " given.");
 		}
 		
 		Routine r = program.getRoutine(args.get(1));

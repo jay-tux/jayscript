@@ -61,10 +61,6 @@ public class Statement {
 				newC = new Else(args);
 				break;
 				
-			case "add":
-				newC = new Add(args);
-				break;
-				
 			case "opt":
 				newC = new Opt(args);
 				break;

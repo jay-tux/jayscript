@@ -11,7 +11,7 @@ public class Not extends Command
 	{
 		if(args.size() != 3)
 		{
-			throw new JayInterpreterException("Argument error: `if` expects 3 arguments, " +
+			throw new JayInterpreterException("Argument error: `not` expects 3 arguments, " +
 					args.size() + " given.");
 		}
 		

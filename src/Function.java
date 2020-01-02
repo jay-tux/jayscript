@@ -19,7 +19,7 @@ public class Function extends Routine
 		//function <type> <name> {args ...}
 		if(args.size() < 2)
 		{
-			throw new JayInterpreterException("Syntax error: `function` expects 2 arguments, " + args.size() + " given.");
+			throw new JayInterpreterException("Syntax error: `function` expects at least 2 arguments, " + args.size() + " given.");
 		}
 		
 		routineName = args.get(1);
