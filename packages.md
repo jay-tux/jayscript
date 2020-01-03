@@ -35,7 +35,7 @@ Prints the result of the expression ``<expr>`` to System.out.
 
 **Throws**     
 ``Syntax error``        -> ``<expr>`` is empty  
-``Expression error``    -> ``<expr>`` isn't formatted correctly
+``Expression error``    -> ``<expr>`` isn't formatted correctly  
 ``Expression error``    -> one of the parts of ``<expr>`` is not an operator, int or variable  
 
 #### Expressions
