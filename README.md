@@ -323,3 +323,51 @@ See Declare.
 ``Syntax error``	-> can't define an empty type  
 ``Syntax error``	-> one of the field definitions isn't declared as ``<field type>:<field name>``  
 ``Type error``		-> one of the fields is of an unknown type  
+
+### Non-word commands
+All non-word commands are parsed before anything else.
+This is done in the following order:
+  1) Imports (which alter line numbers)
+  1) Flags
+  1) Comments (which are skipped)
+
+#### Comment
+**Usage**  
+```
+~ <comment>
+```
+While not exactly a command, the ``~`` at the beginning of a line allows for a one-line comment.
+
+**Throws**  
+Nothing  
+
+#### Flag
+**Usage**
+```
+@<flagname>
+```
+Creates a named flag. The flag name should be exactly one word, but multiple words work as well:
+```
+~ flag definition
+@multi word flag
+
+~ other lines of code
+
+~ jump
+jump "multi word flag"
+```
+
+**Throws**  
+Nothing
+
+#### Import
+**Usage**
+```
+!<filename>
+```
+Imports another file (which is referenced relative to the current file).
+Imported files can't contain other imports (as for now).
+
+**Throws**  
+``Import error``	-> the file specified doesn't exist or is a directory  
+``Import error``	-> the file is not readable  
