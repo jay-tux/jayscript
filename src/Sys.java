@@ -10,7 +10,9 @@ public class Sys extends Command
 		imported = new HashMap<>();
 		notImported = new JayInterpreterException("Package error: this command requires a package to be imported.");
 		packages.add("math");
+		packages.add("io");
 		imported.put("math", false);
+		imported.put("io", false);
 	}
 	
 	public Sys(List<String> args) 

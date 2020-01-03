@@ -26,12 +26,12 @@ public final class Interpreter {
 			}
 			catch(IOException ex)
 			{
-				throw new JayInterpreterException("Failed to read from file.");
+				throw new JayInterpreterException("Loading error: Failed to read from file.");
 			}
 		}
 		else
 		{
-			throw new JayInterpreterException("File doesn't exist or is a directory.");
+			throw new JayInterpreterException("Loading error: File doesn't exist or is a directory.");
 		}
 		program = State.defaultState();
 	}

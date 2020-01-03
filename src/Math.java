@@ -1,17 +1,15 @@
 import java.util.*;
 
-public class Math extends Command
+public class Math extends PackageCommand
 {
-	protected String mode;
 	protected static String[] modes = { "set", "print" };
 	
 	public Math(List<String> args, String mode)
 	{
-		super(args);
+		super(args, mode);
 		if(!Arrays.asList(modes).contains(mode)) {
 			throw new JayInterpreterException("Syntax error: unknown math mode.");
 		}
-		this.mode = mode;
 		if(!Sys.isImported("math")) { throw Sys.getNotImported(); }
 	}
 	

@@ -1,0 +1,23 @@
+~ import file io package
+sys io
+
+~ write "Random string" to ~/tmp.iojay
+	~ declare & init vars
+declare string out
+set out "Random string"
+
+	~ io call
+println Writing &out to ~/tmp.iojay
+io_write ~/tmp.iojay out
+
+
+~ read contents from ~/tmp.iojay
+	~ declare in var
+declare string in
+
+	~ io call
+io_read ~/tmp.iojay in
+
+
+~finished
+exit

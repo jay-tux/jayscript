@@ -138,6 +138,14 @@ public class Statement {
 			case "mathf_print":
 				newC = new MathF(args, "print");
 				break;
+					/* io */
+			case "io_read":
+				newC = new IO(args, "read");
+				break;
+				
+			case "io_write":
+				newC = new IO(args, "write");
+				break;
 			
 			default:
 				throw new JayInterpreterException("Syntax error: " + command + " is unknown.");
