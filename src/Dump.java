@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Dump extends DebugCommand
 {
-	public Dump(ArrayList<String> args)
+	public Dump(List<String> args)
 	{
 		super(args);
 	}
@@ -25,7 +25,7 @@ public class Dump extends DebugCommand
 		}
 	}
 	
-	private static ArrayList<String> collapseVars(HashMap<String, Variable> in)
+	private static List<String> collapseVars(Map<String, Variable> in)
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		for(Map.Entry<String, Variable> entr : in.entrySet())
@@ -35,7 +35,7 @@ public class Dump extends DebugCommand
 		return ret;
 	}
 	
-	private static ArrayList<String> collapseFlags(HashMap<String, Integer> in)
+	private static List<String> collapseFlags(Map<String, Integer> in)
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		for(Map.Entry<String, Integer> entr : in.entrySet())
@@ -45,7 +45,7 @@ public class Dump extends DebugCommand
 		return ret;
 	}
 	
-	private static ArrayList<String> getEnabled(HashMap<String, Boolean> in)
+	private static List<String> getEnabled(Map<String, Boolean> in)
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		for(Map.Entry<String, Boolean> entr : in.entrySet())

@@ -2,9 +2,9 @@ import java.util.*;
 
 public abstract class Command 
 {
-	protected ArrayList<String> args;
+	protected List<String> args;
 	
-	protected Command(ArrayList<String> args)
+	protected Command(List<String> args)
 	{
 		this.args = args;
 	}

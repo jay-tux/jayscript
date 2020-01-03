@@ -2,7 +2,7 @@ import java.util.*;
 
 public class ArgCall extends Call 
 {
-	public ArgCall(ArrayList<String> args)
+	public ArgCall(List<String> args)
 	{
 		super(args);
 	}

@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Keep extends ArgCall
 {
-	public Keep(ArrayList<String> args)
+	public Keep(List<String> args)
 	{
 		super(args);
 	}

@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Return extends Command
 {
-	public Return(ArrayList<String> args)
+	public Return(List<String> args)
 	{
 		super(args);
 	}

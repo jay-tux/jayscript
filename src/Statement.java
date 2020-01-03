@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Statement {
 	private String command;
-	private ArrayList<String> args;
+	private List<String> args;
 	
 	public static Statement fromLine(String l)
 	{

@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Set extends Command
 {
-	public Set(ArrayList<String> args)
+	public Set(List<String> args)
 	{
 		super(args);
 	}

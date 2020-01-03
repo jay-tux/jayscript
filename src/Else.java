@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Else extends Command
 {
-	public Else(ArrayList<String> args)
+	public Else(List<String> args)
 	{
 		super(args);
 	}

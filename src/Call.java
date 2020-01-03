@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Call extends Command
 {
-	public Call(ArrayList<String> args)
+	public Call(List<String> args)
 	{
 		super(args);
 	}

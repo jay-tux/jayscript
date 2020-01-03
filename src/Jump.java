@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Jump extends Command
 {
-	public Jump(ArrayList<String> args)
+	public Jump(List<String> args)
 	{
 		super(args);
 	}

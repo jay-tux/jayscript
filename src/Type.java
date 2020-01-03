@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Type extends Command
 {
-	public Type(ArrayList<String> args)
+	public Type(List<String> args)
 	{
 		super(args);
 	}
@@ -19,7 +19,7 @@ public class Type extends Command
 		}
 		
 		String typename = args.get(0);
-		HashMap<String, String> fields = new HashMap<>();
+		Map<String, String> fields = new HashMap<>();
 		for(int i = 1; i < args.size(); i++)
 		{
 			if(!args.get(i).contains(":") || args.get(i).split(":").length != 2)

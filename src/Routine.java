@@ -2,10 +2,10 @@ import java.util.*;
 
 public class Routine extends Command 
 {
-	protected ArrayList<String> commands;
+	protected List<String> commands;
 	protected String routineName;
 	
-	public Routine(ArrayList<String> args)
+	public Routine(List<String> args)
 	{
 		super(args);
 		commands = new ArrayList<>();

@@ -2,7 +2,7 @@ import java.util.*;
 
 public class PrintLn extends Print 
 {
-	public PrintLn(ArrayList<String> args) { super(args); }
+	public PrintLn(List<String> args) { super(args); }
 	
 	public void execute(State program)
 	{

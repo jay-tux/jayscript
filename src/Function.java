@@ -2,12 +2,13 @@ import java.util.*;
 
 public class Function extends Routine
 {
-	private ArrayList<String> argtypes;
-	private ArrayList<String> argnames;
+	private List<String> argtypes;
+	private List<String> argnames;
+	private Map<String, Integer> flags;
 	private State context;
 	private String returnType;
 	
-	public Function(ArrayList<String> args)
+	public Function(List<String> args)
 	{
 		super(args);
 	}
@@ -27,6 +28,7 @@ public class Function extends Routine
 		argtypes = new ArrayList<>();
 		argnames = new ArrayList<>();
 		commands = new ArrayList<>();
+		flags = new HashMap<String, Integer>();
 		
 		for(int i = 2; i < args.size(); i++)
 		{
@@ -44,6 +46,7 @@ public class Function extends Routine
 		}
 		
 		program.incrementLineCounter();
+		int internalCounter = 0;
 		boolean reachedEnd = false;
 		while(!reachedEnd)
 		{
@@ -53,18 +56,24 @@ public class Function extends Routine
 				commands.add("exit");
 				reachedEnd = true;
 			}
+			else if(nextline.startsWith("@"))
+			{
+				commands.add(nextline);
+				flags.put(nextline.trim().substring(1), internalCounter);
+			}
 			else
 			{
 				commands.add(nextline);
 			}
 			program.incrementLineCounter();
 			//System.out.println(commands);
+			internalCounter++;
 		}
 		program.decrementLineCounter();
 		program.addRoutine(routineName, this);
 	}
 
-	public void invoke(State program, ArrayList<String> defArgs)
+	public void invoke(State program, List<String> defArgs)
 	{
 		if(defArgs.size() != argnames.size())
 		{
@@ -73,7 +82,6 @@ public class Function extends Routine
 		}
 		
 		State substate = State.defaultState();
-		context = substate;
 		int counter = 0;
 		for(String s : defArgs)
 		{
@@ -92,11 +100,16 @@ public class Function extends Routine
 		}
 		
 		substate.setParent(program);
+		for(String key : flags.keySet())
+		{
+			substate.setFlag(key, flags.get(key));
+		}
 		substate.giveLines(commands);
 		substate.runSingle();
+		context = substate;
 	}
 	
-	public State invokeSave(State program, ArrayList<String> defArgs)
+	public State invokeSave(State program, List<String> defArgs)
 	{
 		invoke(program, defArgs);
 		return context;

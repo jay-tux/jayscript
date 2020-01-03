@@ -1,8 +1,8 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Not extends Command
 {
-	public Not(ArrayList<String> args)
+	public Not(List<String> args)
 	{
 		super(args);
 	}

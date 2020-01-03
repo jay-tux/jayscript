@@ -2,7 +2,7 @@ import java.util.*;
 
 public class If extends Command
 {
-	public If(ArrayList<String> args)
+	public If(List<String> args)
 	{
 		super(args);
 	}

@@ -5,7 +5,7 @@ public class Math extends Command
 	protected String mode;
 	protected static String[] modes = { "set", "print" };
 	
-	public Math(ArrayList<String> args, String mode)
+	public Math(List<String> args, String mode)
 	{
 		super(args);
 		if(!Arrays.asList(modes).contains(mode)) {
@@ -46,7 +46,7 @@ public class Math extends Command
 		}
 	}
 	
-	protected ArrayList<MathExpr> infixToPostfix(ArrayList<String> infix)
+	protected List<MathExpr> infixToPostfix(List<String> infix)
 	{
 		Stack<MathExpr> stack = new Stack<>();
 		ArrayList<MathExpr> fin = new ArrayList<>();
@@ -102,7 +102,7 @@ public class Math extends Command
 		return fin;
 	}
 	
-	private ArrayList<MathExpr> fill(ArrayList<MathExpr> unfilled, State program)
+	private List<MathExpr> fill(List<MathExpr> unfilled, State program)
 	{
 		for(MathExpr ex : unfilled)
 		{
@@ -134,9 +134,9 @@ public class Math extends Command
 		return unfilled;
 	}
 	
-	private int calculate(ArrayList<MathExpr> postfix, State program)
+	private int calculate(List<MathExpr> postfix, State program)
 	{
-		ArrayList<MathExpr> filled = fill(postfix, program);
+		List<MathExpr> filled = fill(postfix, program);
 		Stack<Integer> values = new Stack<>();
 		for(MathExpr ex : filled)
 		{

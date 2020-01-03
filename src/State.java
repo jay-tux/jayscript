@@ -2,11 +2,11 @@ import java.util.*;
 
 public class State
 {
-	private HashMap<String, Variable> variables;
-	private HashMap<String, Integer> flags;
-	private HashMap<String, Boolean> options;
-	private HashMap<String, Routine> routines;
-	private ArrayList<String> lines;
+	private Map<String, Variable> variables;
+	private Map<String, Integer> flags;
+	private Map<String, Boolean> options;
+	private Map<String, Routine> routines;
+	private List<String> lines;
 	private int lineCounter;
 	private boolean finished;
 	private Command prevCommand;
@@ -52,7 +52,14 @@ public class State
 	public Routine getRoutine(String name) { return (hasRoutine(name)) ? 
 			routines.keySet().contains(name) ? routines.get(name) : parent.getRoutine(name) : null; }
 	
-	public void giveLines(ArrayList<String> lines) { this.lines = lines; }
+	public void giveLines(List<String> lines) 
+	{
+		if(this.lines == null) { this.lines = new ArrayList<String>(); }
+		for(String s : lines)
+		{
+			this.lines.add(s.trim());
+		}
+	}
 	public String getLine(int lineno) { return lines.get(lineno); }
 	public String currenLine() { return lines.get(lineCounter); }
 	
@@ -63,9 +70,9 @@ public class State
 	public void updateCommand(Command c) { this.prevCommand = c; }
 	public Command getPrevious() { return this.prevCommand; }
 	
-	public HashMap<String, Variable> getVars() { return variables; }
-	public HashMap<String, Integer> getFlags() { return flags; }
-	public HashMap<String, Boolean> getOpts() { return options; }
+	public Map<String, Variable> getVars() { return variables; }
+	public Map<String, Integer> getFlags() { return flags; }
+	public Map<String, Boolean> getOpts() { return options; }
 	
 	public boolean optionValue(String option)
 	{

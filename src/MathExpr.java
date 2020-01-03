@@ -6,7 +6,7 @@ public class MathExpr {
 	private int converted;
 	private float convertedF;
 	
-	private static HashMap<String, Integer> operators;
+	private static Map<String, Integer> operators;
 	
 	static {
 		operators = new HashMap<>();

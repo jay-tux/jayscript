@@ -2,8 +2,8 @@ import java.util.*;
 
 public class Sys extends Command
 {
-	private static ArrayList<String> packages;
-	private static HashMap<String, Boolean> imported;
+	private static List<String> packages;
+	private static Map<String, Boolean> imported;
 	private static JayInterpreterException notImported;
 	static {
 		packages = new ArrayList<>();
@@ -13,7 +13,7 @@ public class Sys extends Command
 		imported.put("math", false);
 	}
 	
-	public Sys(ArrayList<String> args) 
+	public Sys(List<String> args) 
 	{
 		super(args);
 	}

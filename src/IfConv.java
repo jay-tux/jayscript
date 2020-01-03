@@ -2,7 +2,7 @@ import java.util.*;
 
 public class IfConv extends If 
 {
-	public IfConv(ArrayList<String> args)
+	public IfConv(List<String> args)
 	{
 		super(args);
 	}

@@ -8,7 +8,7 @@ public class Read extends Command
 		lineFeed = new Scanner(System.in);
 	}
 	
-	public Read(ArrayList<String> args)
+	public Read(List<String> args)
 	{
 		super(args);
 	}

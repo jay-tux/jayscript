@@ -2,12 +2,12 @@ import java.util.*;
 
 public class MathF extends Math
 {
-	public MathF(ArrayList<String> args, String mode)
+	public MathF(List<String> args, String mode)
 	{
 		super(args, mode);
 	}
 	
-	private ArrayList<MathExpr> fill(ArrayList<MathExpr> unfilled, State program)
+	private List<MathExpr> fill(List<MathExpr> unfilled, State program)
 	{
 		for(MathExpr ex : unfilled)
 		{
@@ -39,9 +39,9 @@ public class MathF extends Math
 		return unfilled;
 	}
 	
-	private float calculate(ArrayList<MathExpr> postfix, State program)
+	private float calculate(List<MathExpr> postfix, State program)
 	{
-		ArrayList<MathExpr> filled = fill(postfix, program);
+		List<MathExpr> filled = fill(postfix, program);
 		Stack<Float> values = new Stack<>();
 		for(MathExpr ex : filled)
 		{

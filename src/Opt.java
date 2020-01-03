@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Opt extends Command
 {
-	public Opt(ArrayList<String> args)
+	public Opt(List<String> args)
 	{
 		super(args);
 	}

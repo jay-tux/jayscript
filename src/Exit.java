@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Exit extends Command
 {
-	public Exit(ArrayList<String> args)
+	public Exit(List<String> args)
 	{
 		super(args);
 	}

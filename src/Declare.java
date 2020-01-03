@@ -1,8 +1,8 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Declare extends Command
 {
-	public Declare(ArrayList<String> args)
+	public Declare(List<String> args)
 	{
 		super(args);
 	}

@@ -3,7 +3,7 @@ import java.util.*;
 public class Variable
 {
 	public static String[] builtin = new String[] { "int", "char", "float", "string" };
-	private static HashMap<String, HashMap<String, String>> customs;
+	private static Map<String, Map<String, String>> customs;
 	
 	static 
 	{
@@ -12,7 +12,7 @@ public class Variable
 	
 	private String type;
 	private Object value;
-	private HashMap<String, Variable> fields;
+	private Map<String, Variable> fields;
 	
 	public Variable(String type)
 	{
@@ -43,7 +43,7 @@ public class Variable
 		return isBuiltin(type) || customs.containsKey(type);
 	}
 	
-	public static void createType(String name, HashMap<String, String> fields)
+	public static void createType(String name, Map<String, String> fields)
 	{
 		if(!customs.containsKey(name) && !Arrays.asList(builtin).contains(name))
 		{
@@ -62,7 +62,7 @@ public class Variable
 		if(!isBuiltin(type)) { throw new JayInterpreterException("Type error: can't get value::single from non-builtin type."); }
 		return value; 
 	}
-	public HashMap<String, Variable> getFields() 
+	public Map<String, Variable> getFields() 
 	{
 		if(isBuiltin(type)) { throw new JayInterpreterException("Type error: can't get value::fields from builtin type."); }
 		return fields; 

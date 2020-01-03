@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Print extends Command
 {
-	public Print(ArrayList<String> args)
+	public Print(List<String> args)
 	{
 		super(args);
 	}

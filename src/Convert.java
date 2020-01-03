@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Convert extends Command
 {
-	public Convert(ArrayList<String> args)
+	public Convert(List<String> args)
 	{
 		super(args);
 	}
