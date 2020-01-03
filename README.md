@@ -18,6 +18,14 @@ Indentation doesn't actually matter, only the keywords.
 Comments (one-line), start with a ``~``.
 Comments cannot be started mid-line, only at the beginning of a line.
 
+### Builtin types
+JayScript provides four basic data types:
+  1) Integer (declared as int)
+  1) Character (declared as char)
+  1) Floating point number (declared as float)
+  1) String (declared as string)
+You can create your own types using the Type command.
+
 ### Commands
 Each command has, in the source files, its own class, which extends the Command class.
 Commands are parsed by the Statement class, which uses a ``switch-case`` loop to detect which command to call.
@@ -282,4 +290,36 @@ Fails (throws an error) if the variable isn't declared or the value isn't compat
 See Declare.
 
 **Throws**
-``Argument error``	-> you need to give Set exactly two arguments (string can contain spaces as long as they're enclosed in double quotes (")
+``Argument error``	-> you need to give Set exactly two arguments (strings can contain spaces as long as they're enclosed in double quotes (")
+
+#### Sys
+**Usage**
+```
+sys <package>
+```
+Imports a system package. Packages are described in packages.md.
+
+**Throws**
+*Sys call*
+``Syntax error``	-> Sys requires exactly one argument
+``Name error``		-> the package specified doesn't exist
+``Syntax error``	-> the package specified is not imported
+*Package usage*
+``Name error``		-> the package doesn't exist
+``Package error``	-> ``<command>`` requires a package to be imported
+
+#### Type
+**Usage**
+```
+type <name> <field0 type>:<field0 name> <field1 type>:<field1 name> ...
+```
+Creates a user-defined type.
+Each field should be of an existing type (builtin or custom).
+Once a type is defined, instances of it can be created.
+See Declare.
+
+**Throws**
+``Syntax error``	-> Type requires at least one argument
+``Syntax error``	-> can't define an empty type
+``Syntax error``	-> one of the field definitions isn't declared as ``<field type>:<field name>``
+``Type error``		-> one of the fields is of an unknown type
