@@ -21,7 +21,7 @@ math_set <varname> <expr>
 ```
 Sets the variable ``<varname>`` (which should be an int) to the result of the expression ``<expr>``.
 
-**Throws**
+**Throws**  
 ``Syntax error``	-> ``<expr>`` is empty  
 ``Expression error``	-> ``<expr>`` isn't formatted correctly  
 ``Expression error``	-> one of the parts of ``<expr>`` is not an operator, int or variable  
