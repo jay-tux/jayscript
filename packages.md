@@ -15,7 +15,7 @@ The ``mathf_`` versions do the same as their ``math_`` counterpart, but whereas 
 That being said, only the ``math_`` will be explained, since the ``mathf_``'s are the same.
 
 #### Command ``math_set``
-**Usage**
+**Usage**  
 ```
 math_set <varname> <expr>
 ```
