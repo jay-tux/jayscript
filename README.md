@@ -8,6 +8,11 @@ To interprete a ``*.jay`` file, just run a compiled version with the file as arg
 ## Programming in JayScript...
 ...can be done in a simple text editor. It's the text that matters, after all.
 
+### Examples
+The ``examples`` directory contains JayScript examples.
+Current examples:
+  1) Fibonacci (recursive)  
+
 ### How to?
 Each line in JayScript is a command or comment.
 Each command starts with a keyword, then a space (' '), and then it's arguments, also separated by spaces.
