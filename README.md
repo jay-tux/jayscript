@@ -23,7 +23,7 @@ JayScript provides four basic data types:
   1) Integer (declared as int)
   1) Character (declared as char)
   1) Floating point number (declared as float)
-  1) String (declared as string)
+  1) String (declared as string)  
 You can create your own types using the Type command.
 
 ### Commands
@@ -254,7 +254,7 @@ The given variable should be a string.
 **Throws**  
 ``Argument error``	-> Read requires exactly one argument.  
 
-####Return
+#### Return
 **Usage**  
 ```
 return <varname>
