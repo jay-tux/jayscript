@@ -1,16 +1,22 @@
 ~ import fibonacci
 !fib.jay
 
+~ declare variables: arguments and results
 declare int arg1 
-set arg1 7
 declare int arg2
-set arg2 4
 declare int res1
 declare int res2
 
+~ set arguments
+set arg1 7
+set arg2 4
+
+~ call fibonacci function with set arguments
+~ store results in variables
 keep res1 fib arg1
 keep res2 fib arg2
 
+~ print the results
 println Fibonacci (7) equals &res1
 println Fibonacci (4) equals &res2
 

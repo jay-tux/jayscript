@@ -3,36 +3,48 @@ sys math
 
 ~ create fibonnaci function
 function int fib int:in
+
+	~ declare variables for base cases
 	declare int basecase
 	declare int zerocase
+
+	~ set variables for base cases
 	set basecase 1
 	set zerocase 2
 
 	~ base case: in = 1
 	if in basecase jmp
+
 	~ second base case: in = 0
 	if in zerocase second
 
 	~ other case: in != 1
+	~ declare variables
 	declare int arg1
 	declare int arg2
 	declare int tmp1
 	declare int tmp2
 	declare int res
 
+	~ use math package to decrease argument values
 	math_set arg1 in - 1
 	math_set arg2 in - 2
 
+	~ recursive call of fib function; storing the result
 	keep tmp1 fib arg1
 	keep tmp2 fib arg2
 
+	~ use math package to determine result
 	math_set res tmp1 + tmp2
+	~ return result
 	return res
 
-	~ evaluation of basecase
+	~ evaluation of basecase: return 1 (arg=1)
 	@jmp
 	return basecase
-	~ evaluation of zerocase
+	~ evaluation of zerocase: return 1 (arg=2)
 	@second
 	return basecase
+
+~ end function
 end fib
