@@ -1,0 +1,38 @@
+~ import math package
+sys math
+
+~ create fibonnaci function
+function int fib int:in
+	declare int basecase
+	declare int zerocase
+	set basecase 1
+	set zerocase 2
+
+	~ base case: in = 1
+	if in basecase jmp
+	~ second base case: in = 0
+	if in zerocase second
+
+	~ other case: in != 1
+	declare int arg1
+	declare int arg2
+	declare int tmp1
+	declare int tmp2
+	declare int res
+
+	math_set arg1 in - 1
+	math_set arg2 in - 2
+
+	keep tmp1 fib arg1
+	keep tmp2 fib arg2
+
+	math_set res tmp1 + tmp2
+	return res
+
+	~ evaluation of basecase
+	@jmp
+	return basecase
+	~ evaluation of zerocase
+	@second
+	return basecase
+end fib

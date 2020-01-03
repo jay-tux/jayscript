@@ -1,0 +1,18 @@
+~ import fibonacci
+!fib.jay
+
+declare int arg1 
+set arg1 7
+declare int arg2
+set arg2 4
+declare int res1
+declare int res2
+
+keep res1 fib arg1
+keep res2 fib arg2
+
+println Fibonacci (7) equals &res1
+println Fibonacci (4) equals &res2
+
+~ finished
+exit
