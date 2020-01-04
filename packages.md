@@ -55,3 +55,52 @@ Calculation of the result is done in the following steps:
   1) Convert constants to their numeric value
   1) Convert variables to their numeric value
   1) Evaluate the postfix
+
+### Package io
+**Importing**
+```
+sys io
+```
+IO contains three new commands:
+  1) ``io_create``  
+  1) ``io_read``  
+  1) ``io_write``    
+All of these commands operate on files.
+
+#### Command ``io_create``
+**Usage**
+```
+io_create <filepath>
+```
+Creates a new file or directory at ``<filepath>``.
+
+**Throws**  
+``Syntax error``	-> ``io_create`` requires exactly one argument  
+``IO error``		-> the file/directory already exists  
+``IO error``		-> something else went wrong while creating the file (permissions, ...)  
+
+#### Command ``io_read``
+**Usage**
+```
+io_read <filepath> <out>
+```
+Reads the data from the file ``<filepath>`` into the (string) variable ``<out>``.
+
+**Throws**  
+``Syntax error``	-> ``io_read`` requires exactly two arguments  
+``IO error``		-> ``<filepath>`` doesn't exist  
+``IO error``		-> ``<filepath>`` points to a directory  
+``IO error``		-> something else went wrong while attempting to read  
+
+#### Command ``io_write``
+**Usage**
+```
+io_write <filepath> <data>
+```
+Writes the contents of (the string) ``<data>`` to the file ``<filepath>``.
+
+**Throws**  
+``Syntax error``        -> ``io_write`` requires exactly two arguments  
+``IO error``            -> ``<filepath>`` doesn't exist   
+``IO error``            -> ``<filepath>`` points to a directory  
+``IO error``            -> something else went wrong while attempting to write  

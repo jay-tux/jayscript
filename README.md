@@ -303,6 +303,10 @@ See Declare.
 sys <package>
 ```
 Imports a system package. Packages are described in packages.md.
+All packages available:
+  1) math
+  1) io
+  1) coll (in development)
 
 **Throws**  
 *Sys call*  

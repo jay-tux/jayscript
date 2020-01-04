@@ -6,6 +6,8 @@ sys io
 declare string out
 set out "Random string"
 
+	~ io call to create file
+~ io_create ~/tmp.iojay
 	~ io call
 println Writing &out to ~/tmp.iojay
 io_write ~/tmp.iojay out
@@ -17,7 +19,8 @@ declare string in
 
 	~ io call
 io_read ~/tmp.iojay in
-
+println Read something from ~/tmp.iojay:
+println &in
 
 ~finished
 exit

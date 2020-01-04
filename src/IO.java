@@ -21,7 +21,12 @@ public class IO extends PackageCommand
 		{
 			if(args.size() == 2)
 			{
-				File in = new File(args.get(0));
+				String pth = args.get(0);
+				if(pth.startsWith("~"))
+				{
+					pth = pth.replace("~", System.getProperty("user.home"));
+				}
+				File in = new File(pth);
 				if(in.exists() && !in.isDirectory())
 				{
 					try
@@ -47,7 +52,41 @@ public class IO extends PackageCommand
 		{
 			if(args.size() == 1)
 			{
-				
+				String pth = args.get(0);
+				if(pth.startsWith("~"))
+				{
+					pth = pth.replace("~", System.getProperty("user.home"));
+				}
+				Path p = Path.of(pth);
+				File in = p.toFile();
+				if(in.exists())
+				{
+					throw new JayInterpreterException("IO error: File or directory exists.");
+				}
+				else
+				{
+					try
+					{
+						if(in.isDirectory())
+						{
+							if(!in.mkdir())
+							{
+								throw new JayInterpreterException("IO error: Failed to create directory.");
+							}
+						}
+						else
+						{
+							if(!in.createNewFile())
+							{
+								throw new JayInterpreterException("IO error: Failed to create file.");
+							}
+						}
+					}
+					catch(IOException ex)
+					{
+						throw new JayInterpreterException("IO error: Failed to create file (2).");
+					}
+				}
 			}
 			else
 			{
@@ -58,7 +97,12 @@ public class IO extends PackageCommand
 		{
 			if(args.size() == 2)
 			{
-				File in = new File(args.get(0));
+				String pth = args.get(0);
+				if(pth.startsWith("~"))
+				{
+					pth = pth.replace("~", System.getProperty("user.home"));
+				}
+				File in = new File(pth);
 				if(in.exists() && !in.isDirectory())
 				{
 					try
@@ -69,7 +113,7 @@ public class IO extends PackageCommand
 					}
 					catch(IOException ex)
 					{
-						throw new JayInterpreterException("IO error: Failed to read from file.");
+						throw new JayInterpreterException("IO error: Failed to write to file.");
 					}
 				}
 				else

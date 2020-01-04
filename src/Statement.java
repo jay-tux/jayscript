@@ -146,6 +146,10 @@ public class Statement {
 			case "io_write":
 				newC = new IO(args, "write");
 				break;
+				
+			case "io_create":
+				newC = new IO(args, "create");
+				break;
 			
 			default:
 				throw new JayInterpreterException("Syntax error: " + command + " is unknown.");
