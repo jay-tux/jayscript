@@ -1,0 +1,53 @@
+~ import collections package
+sys coll
+
+~ create a printing function for one int
+function int printOne int:val
+	println &val
+end printOne
+
+~ create a list (of ints)
+coll_create int lst
+
+~ declare some vars
+declare int rnd1
+declare int rnd2
+declare int ind
+set rnd1 5
+set rnd2 9
+set ind 0
+
+~ add five numbers
+coll_add lst 5
+coll_add lst 9
+coll_add lst rnd1
+coll_add lst rnd2
+coll_add lst 8
+
+~ print the list
+coll_prnt lst
+
+~ remove the third value, then the first
+coll_rm lst 2
+coll_rm lst ind
+
+~ print again
+coll_prnt lst
+
+~ change the new second value, then the first
+coll_upd lst 1 8
+coll_upd lst ind rnd2
+
+~ iterate over the list, printing all values
+coll_iter lst printOne
+
+~ insert as second one
+coll_ins lst 1 rnd2
+
+~ print second value
+declare int out
+coll_get lst 1 out
+println &out
+
+~ finished
+exit

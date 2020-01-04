@@ -3,26 +3,31 @@ import java.util.*;
 public class Variable
 {
 	public static String[] builtin = new String[] { "int", "char", "float", "string" };
-	private static Map<String, Map<String, String>> customs;
+	public static String[] sys = new String[] { "coll" };
+	protected static Map<String, Map<String, String>> customs;
 	
 	static 
 	{
 		customs = new HashMap<>();
 	}
 	
-	private String type;
+	protected String type;
 	private Object value;
 	private Map<String, Variable> fields;
 	
 	public Variable(String type)
 	{
-		if(!Arrays.asList(builtin).contains(type) && !customs.containsKey(type)) 
+		if(!Arrays.asList(builtin).contains(type) && !customs.containsKey(type) && !Arrays.asList(sys).contains(type)) 
 		{
 			throw new JayInterpreterException("Type error: type __" + type + "__ unknown.");
 		}
 		this.value = null;
 		this.type = type;
-		if(!isBuiltin(type))
+		if(type.equals(sys[0]))
+		{
+			
+		}
+		else if(!isBuiltin(type))
 		{
 			fields = new HashMap<>();
 			for(String s : customs.get(type).keySet())

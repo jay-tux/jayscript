@@ -223,6 +223,15 @@ public class State
 		variables.put(identifier, new Variable(type));
 	}
 	
+	public void declareColl(String collType, String identifier)
+	{
+		if(variables.containsKey(identifier) || variables.containsKey(identifier.split("->")[0]))
+		{
+			throw new JayInterpreterException("Name error: identifier '" + identifier + "' is already declared.");
+		}
+		variables.put(identifier, new Collection(collType));
+	}
+	
 	public void setVar(String variable, Object newValue)
 	{
 		if(!variables.containsKey(variable) && !variables.containsKey(variable.split("->")[0]))

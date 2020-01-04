@@ -11,8 +11,10 @@ public class Sys extends Command
 		notImported = new JayInterpreterException("Package error: this command requires a package to be imported.");
 		packages.add("math");
 		packages.add("io");
+		packages.add("coll");
 		imported.put("math", false);
 		imported.put("io", false);
+		imported.put("coll", false);
 	}
 	
 	public Sys(List<String> args) 

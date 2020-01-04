@@ -109,6 +109,22 @@ public class Function extends Routine
 		context = substate;
 	}
 	
+	public void invokeColl(State program, Object var, String type)
+	{
+		if(argnames.size() != 1) { throw new JayInterpreterException("Syntax error: iteration function requires exactly one argument."); }
+		if(!argtypes.get(0).equals(type)) 
+			{ throw new JayInterpreterException("Type error: iteration function for __" + argtypes.get(0) + "__."); }
+		State substate = State.defaultState();		
+		substate.declare(argtypes.get(0), argnames.get(0));
+		substate.setVar(argnames.get(0), var);
+		for(String key : flags.keySet())
+		{
+			substate.setFlag(key, flags.get(key));
+		}
+		substate.giveLines(commands);
+		substate.runSingle();
+	}
+	
 	public State invokeSave(State program, List<String> defArgs)
 	{
 		invoke(program, defArgs);
