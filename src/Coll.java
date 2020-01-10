@@ -239,7 +239,7 @@ public class Coll extends PackageCommand
 						{
 							throw new JayInterpreterException("Type error: type mismatch between collection type and variable type.");
 						}
-						program.setVar(args.get(2), ((Collection)program.getColl(args.get(0))).get(index));
+						((Collection)program.getColl(args.get(0))).deepCopyValToVar(args.get(2), index, program);
 					}
 					else
 					{
@@ -273,6 +273,63 @@ public class Coll extends PackageCommand
 							cl.add(ch);
 						}
 					}
+					else
+					{
+						throw new JayInterpreterException("Type error: expected __string__, got __" + program.varType(args.get(1)) + "__.");
+					}
+				}
+				break;
+				
+			case "ins":
+				if(args.size() != 3)
+				{
+					throw new JayInterpreterException("Syntax error: `coll_ins` requires exactly 3 arguments, " + args.size() + " given.");
+				}
+				if(program.varExists(args.get(0)))
+				{
+					if(program.getColl(args.get(0)) instanceof Collection)
+					{
+						int index = -1;
+						if(program.varExists(args.get(1)))
+						{
+							if(program.varType(args.get(1)).equals("int"))
+							{
+								index = Integer.parseInt(program.getVar(args.get(1)).toString());
+							}
+							else
+							{
+								throw new JayInterpreterException("Type error: expected __int__, got __" + program.varType(args.get(1)) + "__.");
+							}
+						}
+						else
+						{
+							try
+							{
+								index = Integer.parseInt(args.get(1));
+							}
+							catch(Exception e)
+							{
+								throw new JayInterpreterException("Type error: expected var or __int__.");
+							}
+						}
+						
+						if(program.varExists(args.get(2)))
+						{
+							((Collection)program.getColl(args.get(0))).insert(index, program.getVar(args.get(2)));
+						}
+						else
+						{
+							((Collection)program.getColl(args.get(0))).insert(index, args.get(2));
+						}
+					}
+					else
+					{
+						throw new JayInterpreterException("Type error: expected __coll__, got __" + program.varType(args.get(0)) + "__.");
+					}
+				}
+				else
+				{
+					throw new JayInterpreterException("Name error: variable " + args.get(0) + " doesn't exist.");
 				}
 				break;
 		}

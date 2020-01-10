@@ -48,6 +48,7 @@ println Iteration finished
 
 ~ insert as second one
 coll_ins lst 1 rnd2
+coll_prnt lst
 
 ~ print second value
 declare int out
