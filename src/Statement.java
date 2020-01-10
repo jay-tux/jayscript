@@ -187,6 +187,10 @@ public class Statement {
 			case "coll_fromstr":
 				newC = new Coll(args, "fromstr");
 				break;
+				
+			case "coll_size":
+				newC = new Coll(args, "size");
+				break;
 			
 			default:
 				throw new JayInterpreterException("Syntax error: " + command + " is unknown.");

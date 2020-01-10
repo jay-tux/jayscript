@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Coll extends PackageCommand
 {
-	protected static String[] modes = { "create", "add", "prnt", "rm", "iter", "upd", "ins", "get", "fromstr" };
+	protected static String[] modes = { "create", "add", "prnt", "rm", "iter", "upd", "ins", "get", "fromstr", "size" };
 	
 	public Coll(List<String> args, String mode)
 	{
@@ -278,6 +278,43 @@ public class Coll extends PackageCommand
 						throw new JayInterpreterException("Type error: expected __string__, got __" + program.varType(args.get(1)) + "__.");
 					}
 				}
+				break;
+				
+			case "size":
+				if(args.size() != 2)
+				{
+					throw new JayInterpreterException("Syntax error: `coll_size` requires exactly 2 arguments, " + args.size() + " given.");
+				}
+				if(program.varExists(args.get(0)))
+				{
+					if(program.getColl(args.get(0)) instanceof Collection)
+					{
+						if(program.varExists(args.get(1)))
+						{
+							if(program.varType(args.get(1)).equals("int"))
+							{
+								program.setVar(args.get(1), ((Collection)program.getColl(args.get(0))).size());
+							}
+							else
+							{
+								throw new JayInterpreterException("Type error: expected __int__, got __" + program.varType(args.get(1)) + "__.");
+							}
+						}
+						else
+						{
+							throw new JayInterpreterException("Name error: variable " + args.get(1) + " doesn't exist.");
+						}
+					}
+					else
+					{
+						throw new JayInterpreterException("Type error: expected __coll__, got __" + program.varType(args.get(0)) + "__.");
+					}
+				}
+				else
+				{
+					throw new JayInterpreterException("Name error: variable " + args.get(0) + " doesn't exist.");
+				}
+				
 				break;
 				
 			case "ins":

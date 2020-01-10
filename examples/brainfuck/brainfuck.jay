@@ -1,0 +1,34 @@
+~ system imports (all three)
+sys io
+sys coll
+sys math
+
+~ code imports
+!increments.jay
+
+~ declarations
+~ variables:
+~	count: 		size of array/tape (dynamic)
+~	pointer: 	current memory cell
+~	curr: 		current memory cell's value
+~	new: 		current memory cell's new value
+~	indent:		current depth of []
+~	program:	program content
+~	pfile:		program file
+~	progcont:	character array containing program
+~	tape:		int collection containing tape values
+declare int count
+declare int pointer
+declare int curr
+declare int new
+declare int indent
+declare string program
+declare string pfile
+
+~ initializations
+set count 1
+set pointer 0
+set curr 0
+set new 0
+set indent 0
+coll_create int tape

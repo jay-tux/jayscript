@@ -110,7 +110,7 @@ Writes the contents of (the string) ``<data>`` to the file ``<filepath>``.
 ```
 sys coll
 ```
-Coll contains nine new commands:  
+Coll contains ten new commands:  
   1) ``coll_create``  
   1) ``coll_add``  
   1) ``coll_prnt``  
@@ -120,6 +120,7 @@ Coll contains nine new commands:
   1) ``coll_ins``  
   1) ``coll_get``  
   1) ``coll_fromstr``  
+  1) ``coll_size``  
 All of these new commands operate on lists (Java's ArrayLists to be specific). All indexes are zero-based.
 
 #### Command ``coll_create``
@@ -244,3 +245,17 @@ Creates a new collection named ``<collection>`` and fills it with all characters
 *See coll_create*  
 ``Syntax error``	-> you need to pass exactly two arguments to ``coll_fromstr``  
 ``Type error``		-> ``<string>`` is not a string  
+
+#### Command ``coll_size``
+**Usage**
+```
+coll_size <collection> <int>
+```
+Stores the amount of elements in ``<collection>`` into ``<int>``.
+
+**Throws**  
+``Syntax error``	-> you need to pass exactly two arguments to ``coll_size``  
+``Type error``		-> ``<int>`` is not an int variable  
+``Name error``		-> ``<int>`` does not exist  
+``Type error``		-> ``<collection>`` is not a collection variable  
+``Name error``		-> ``<collection>`` does not exist  

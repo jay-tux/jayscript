@@ -1,0 +1,12 @@
+~ ============== INCREMENTING AND DECREMENTING FUNCTIONS ===================
+function int increment int:in
+	declare int res
+	math_set res int + 1
+	return res
+end increment
+
+function int decrement int:in
+	declare int res
+	math_set res int - 1
+	return res
+end decrement

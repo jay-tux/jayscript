@@ -77,4 +77,9 @@ public class Collection extends Variable
 			f.invokeColl(program, o, contentType);
 		}
 	}
+	
+	public int size()
+	{
+		return contents.size();
+	}
 }
