@@ -40,7 +40,7 @@ public class Variable
 	
 	public static boolean isBuiltin(String type)
 	{
-		return Arrays.asList(builtin).contains(type);
+		return Arrays.asList(builtin).contains(type) || Arrays.asList(sys).contains(type);
 	}
 	
 	public static boolean isType(String type)

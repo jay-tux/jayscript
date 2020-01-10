@@ -36,10 +36,15 @@ coll_prnt lst
 
 ~ change the new second value, then the first
 coll_upd lst 1 8
-coll_upd lst ind rnd2
+coll_upd lst ind rnd1
+
+~ print a third time
+coll_prnt lst
 
 ~ iterate over the list, printing all values
+println Going to iterate
 coll_iter lst printOne
+println Iteration finished
 
 ~ insert as second one
 coll_ins lst 1 rnd2
@@ -47,7 +52,19 @@ coll_ins lst 1 rnd2
 ~ print second value
 declare int out
 coll_get lst 1 out
-println &out
+println Got value: &out
+
+~ get char array from string
+	~ function to print the characters one by one
+function int printChar char:val
+	println Got character: &val
+end printChar
+
+	~ declarations, ....
+declare string randomstring
+set randomstring "Hello I'm a random string"
+coll_fromstr newColl randomstring
+coll_iter newColl printChar
 
 ~ finished
 exit

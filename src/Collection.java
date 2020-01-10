@@ -3,10 +3,12 @@ import java.util.*;
 public class Collection extends Variable
 {
 	private List<Object> contents;
+	private String contentType;
 	
 	public Collection(String type)
 	{
-		super("");
+		super("coll");
+		contentType = type;
 		contents = new ArrayList<Object>();
 	}
 	
@@ -17,7 +19,7 @@ public class Collection extends Variable
 	
 	public void add(Object value)
 	{
-		if(Variable.isLegalFor(type, value))
+		if(Variable.isLegalFor(contentType, value))
 		{
 			contents.add(value);
 		}
@@ -51,6 +53,8 @@ public class Collection extends Variable
 		contents.add(index, newVal);
 	}
 	
+	public String getContentType() { return contentType; }
+	
 	public Object get(int index)
 	{
 		if(index >= contents.size() || index < 0) { throw new JayInterpreterException("Collection error: index out of range."); }
@@ -70,7 +74,7 @@ public class Collection extends Variable
 			Routine r = program.getRoutine(function);
 			if(!(r instanceof Function)) { throw new JayInterpreterException("Collection error: argument is a routine, not a function."); }
 			Function f = (Function)r;
-			f.invokeColl(program, o, type);
+			f.invokeColl(program, o, contentType);
 		}
 	}
 }

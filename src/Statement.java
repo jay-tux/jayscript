@@ -150,6 +150,43 @@ public class Statement {
 			case "io_create":
 				newC = new IO(args, "create");
 				break;
+				
+					/* coll */
+			case "coll_create":
+				newC = new Coll(args, "create");
+				break;
+				
+			case "coll_add":
+				newC = new Coll(args, "add");
+				break;
+				
+			case "coll_prnt":
+				newC = new Coll(args, "prnt");
+				break;
+				
+			case "coll_rm":
+				newC = new Coll(args, "rm");
+				break;
+				
+			case "coll_iter":
+				newC = new Coll(args, "iter");
+				break;
+				
+			case "coll_upd":
+				newC = new Coll(args, "upd");
+				break;
+				
+			case "coll_ins":
+				newC = new Coll(args, "ins");
+				break;
+				
+			case "coll_get":
+				newC = new Coll(args, "get");
+				break;
+				
+			case "coll_fromstr":
+				newC = new Coll(args, "fromstr");
+				break;
 			
 			default:
 				throw new JayInterpreterException("Syntax error: " + command + " is unknown.");

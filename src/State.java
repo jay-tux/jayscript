@@ -173,6 +173,28 @@ public class State
 		}
 	}
 	
+	public Object getColl(String variable)
+	{
+		if(variables.containsKey(variable))
+		{
+			return variables.get(variable);
+		}
+		else if(variables.containsKey(variable.split("->")[0]))
+		{
+			Variable holder = variables.get(variable.split("->")[0]);
+			for(int i = 1; i < variable.split("->").length; i++)
+			{
+				holder = holder.getField(variable.split("->")[i]);
+			}
+			//System.out.println("Root type: " + holder.getType());
+			return holder;
+		}
+		else
+		{
+			throw new JayInterpreterException("Name error: identifier '" + variable + "' not found.");
+		}
+	}
+	
 	public void setReturn(String varname)
 	{
 		if(variables.containsKey(varname))
@@ -229,7 +251,8 @@ public class State
 		{
 			throw new JayInterpreterException("Name error: identifier '" + identifier + "' is already declared.");
 		}
-		variables.put(identifier, new Collection(collType));
+		Collection c = new Collection(collType);
+		variables.put(identifier, c);
 	}
 	
 	public void setVar(String variable, Object newValue)

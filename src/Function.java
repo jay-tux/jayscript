@@ -113,7 +113,7 @@ public class Function extends Routine
 	{
 		if(argnames.size() != 1) { throw new JayInterpreterException("Syntax error: iteration function requires exactly one argument."); }
 		if(!argtypes.get(0).equals(type)) 
-			{ throw new JayInterpreterException("Type error: iteration function for __" + argtypes.get(0) + "__."); }
+			{ throw new JayInterpreterException("Type error: iteration function for __" + argtypes.get(0) + "__, got " + type + "."); }
 		State substate = State.defaultState();		
 		substate.declare(argtypes.get(0), argnames.get(0));
 		substate.setVar(argnames.get(0), var);

@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Coll extends PackageCommand
 {
-protected static String[] modes = { "create", "add", "prnt", "rm", "iter", "upd", "ins", "get" };
+	protected static String[] modes = { "create", "add", "prnt", "rm", "iter", "upd", "ins", "get", "fromstr" };
 	
 	public Coll(List<String> args, String mode)
 	{
@@ -33,15 +34,16 @@ protected static String[] modes = { "create", "add", "prnt", "rm", "iter", "upd"
 				}
 				if(program.varExists(args.get(0)))
 				{
-					if(program.getVar(args.get(0)) instanceof Collection)
+					if(program.getColl(args.get(0)) == null) { System.out.println("Is null"); }
+					if(program.getColl(args.get(0)) instanceof Collection)
 					{
 						if(program.varExists(args.get(1)))
 						{
-							((Collection)program.getVar(args.get(0))).add(program.getVar(args.get(1)));
+							((Collection)program.getColl(args.get(0))).add(program.getVar(args.get(1)));
 						}
 						else
 						{
-							((Collection)program.getVar(args.get(0))).add(args.get(1));
+							((Collection)program.getColl(args.get(0))).add(args.get(1));
 						}
 					}
 					else
@@ -62,9 +64,9 @@ protected static String[] modes = { "create", "add", "prnt", "rm", "iter", "upd"
 				}
 				if(program.varExists(args.get(0)))
 				{
-					if(program.getVar(args.get(0)) instanceof Collection)
+					if(program.getColl(args.get(0)) instanceof Collection)
 					{
-						((Collection)program.getVar(args.get(0))).print();
+						((Collection)program.getColl(args.get(0))).print();
 					}
 					else
 					{
@@ -84,14 +86,14 @@ protected static String[] modes = { "create", "add", "prnt", "rm", "iter", "upd"
 				}
 				if(program.varExists(args.get(0)))
 				{
-					if(program.getVar(args.get(0)) instanceof Collection)
+					if(program.getColl(args.get(0)) instanceof Collection)
 					{
 						int index = -1;
 						if(program.varExists(args.get(1)))
 						{
 							if(program.varType(args.get(1)).equals("int"))
 							{
-								index = (int)program.getVar(args.get(1));
+								index = Integer.parseInt(program.getVar(args.get(1)).toString());
 							}
 							else
 							{
@@ -102,14 +104,14 @@ protected static String[] modes = { "create", "add", "prnt", "rm", "iter", "upd"
 						{
 							try
 							{
-								index = Integer.parseInt(args.get(0));
+								index = Integer.parseInt(args.get(1));
 							}
 							catch(Exception e)
 							{
 								throw new JayInterpreterException("Type error: expected var or __int__.");
 							}
 						}
-						((Collection)program.getVar(args.get(0))).remove(index);
+						((Collection)program.getColl(args.get(0))).remove(index);
 					}
 					else
 					{
@@ -119,6 +121,158 @@ protected static String[] modes = { "create", "add", "prnt", "rm", "iter", "upd"
 				else
 				{
 					throw new JayInterpreterException("Name error: variable " + args.get(0) + " doesn't exist.");
+				}
+				break;
+				
+			case "upd":
+				if(args.size() != 3)
+				{
+					throw new JayInterpreterException("Syntax error: `coll_upd` requires exactly 3 arguments, " + args.size() + " given.");
+				}
+				if(program.varExists(args.get(0)))
+				{
+					if(program.getColl(args.get(0)) instanceof Collection)
+					{
+						int index = -1;
+						if(program.varExists(args.get(1)))
+						{
+							if(program.varType(args.get(1)).equals("int"))
+							{
+								index = Integer.parseInt(program.getVar(args.get(1)).toString());
+							}
+							else
+							{
+								throw new JayInterpreterException("Type error: expected __int__, got __" + program.varType(args.get(1)) + "__.");
+							}
+						}
+						else
+						{
+							try
+							{
+								index = Integer.parseInt(args.get(1));
+							}
+							catch(Exception e)
+							{
+								throw new JayInterpreterException("Type error: expected var or __int__.");
+							}
+						}
+						
+						if(program.varExists(args.get(2)))
+						{
+							((Collection)program.getColl(args.get(0))).update(index, program.getVar(args.get(2)));
+						}
+						else
+						{
+							((Collection)program.getColl(args.get(0))).update(index, args.get(2));
+						}
+					}
+					else
+					{
+						throw new JayInterpreterException("Type error: expected __coll__, got __" + program.varType(args.get(0)) + "__.");
+					}
+				}
+				else
+				{
+					throw new JayInterpreterException("Name error: variable " + args.get(0) + " doesn't exist.");
+				}
+				break;
+				
+			case "iter":
+				if(args.size() != 2)
+				{
+					throw new JayInterpreterException("Syntax error: `coll_iter` requires exactly 2 arguments, " + args.size() + " given.");
+				}
+				if(program.varExists(args.get(0)))
+				{
+					if(program.getColl(args.get(0)) instanceof Collection)
+					{
+						((Collection)program.getColl(args.get(0))).iterate(args.get(1), program);
+					}
+					else
+					{
+						throw new JayInterpreterException("Type error: expected __coll__, got __" + program.varType(args.get(0)) + "__.");
+					}
+				}
+				else
+				{
+					throw new JayInterpreterException("Name error: variable " + args.get(0) + " doesn't exist.");
+				}
+				break;
+				
+			case "get":
+				if(args.size() != 3)
+				{
+					throw new JayInterpreterException("Syntax error: `coll_get` requires exactly 3 arguments, " + args.size() + " given.");
+				}
+				if(!program.varExists(args.get(2))) 
+				{
+					throw new JayInterpreterException("Name error: variable " + args.get(2) + " doesn't exist.");
+				}
+				if(program.varExists(args.get(0)))
+				{
+					if(program.getColl(args.get(0)) instanceof Collection)
+					{
+						int index = -1;
+						if(program.varExists(args.get(1)))
+						{
+							if(program.varType(args.get(1)).equals("int"))
+							{
+								index = Integer.parseInt(program.getVar(args.get(1)).toString());
+							}
+							else
+							{
+								throw new JayInterpreterException("Type error: expected __int__, got __" + program.varType(args.get(1)) + "__.");
+							}
+						}
+						else
+						{
+							try
+							{
+								index = Integer.parseInt(args.get(1));
+							}
+							catch(Exception e)
+							{
+								throw new JayInterpreterException("Type error: expected var or __int__.");
+							}
+						}
+						if(!((Collection)program.getColl(args.get(0))).getContentType().equals(program.varType(args.get(2))))
+						{
+							throw new JayInterpreterException("Type error: type mismatch between collection type and variable type.");
+						}
+						program.setVar(args.get(2), ((Collection)program.getColl(args.get(0))).get(index));
+					}
+					else
+					{
+						throw new JayInterpreterException("Type error: expected __coll__, got __" + program.varType(args.get(0)) + "__.");
+					}
+				}
+				else
+				{
+					throw new JayInterpreterException("Name error: variable " + args.get(0) + " doesn't exist.");
+				}
+				break;
+				
+			case "fromstr":
+				if(args.size() != 2)
+				{
+					throw new JayInterpreterException("Syntax error: `coll_fromstr` requires exactly 2 arguments, " + args.size() + " given.");
+				}
+				ArrayList<String> args1 = new ArrayList<String>();
+				args1.add("char");
+				args1.add(args.get(0));
+				Coll c = new Coll(args1, "create");
+				c.execute(program);
+				
+				if(program.varExists(args.get(1)))
+				{
+					if(program.varType(args.get(1)).equals("string"))
+					{
+						Collection cl = (Collection)program.getColl(args.get(0));
+						for(char ch : program.getVar(args.get(1)).toString().toCharArray())
+						{
+							cl.add(ch);
+						}
+					}
 				}
 				break;
 		}
