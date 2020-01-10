@@ -12,16 +12,16 @@ To interprete a ``*.jay`` file, just run a compiled version with the file as arg
 The ``examples`` directory contains JayScript examples.
 Current examples:  
   1) Fibonacci (recursive) (in ``fib.jay`` and ``main.jay``), demonstrates:  
-    * imports, system imports  
-    * declare, set  
-    * println  
-    * function calling, keeping return values  
-    * if, jump, flags  
-    * math package  
+   * imports, system imports  
+   * declare, set  
+   * println  
+   * function calling, keeping return values  
+   * if, jump, flags  
+   * math package  
   1) File I/O (in ``io.jay``)  
-    * io package  
+   * io package  
   1) Collections (in ``coll.jay``)  
-    * coll package  
+   * coll package  
 
 ### How to?
 Each line in JayScript is a command or comment.
